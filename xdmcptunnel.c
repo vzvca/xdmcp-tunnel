@@ -87,7 +87,7 @@ unsigned char *addst( unsigned char *pkt, char *s)
 unsigned char *header(unsigned char *pkt, xdmOpCode opcode, CARD16 length)
 {
   unsigned char *opkt = pkt;
-  pkt = add16( pkt, (CARD16) 1);
+  pkt = add16( pkt, (CARD16) XDM_PROTOCOL_VERSION);
   pkt = add16( pkt, (CARD16) opcode);
   pkt = add16( pkt, (CARD16) length);
   assert(pkt-opkt == 6);
@@ -206,7 +206,7 @@ int waitfor(unsigned char *pkt, size_t sz)
   res = select(udpsock+1, &readfds, NULL, NULL, &tv);
   switch( res ) {
   case 0:
-    header(pkt, htobe16(TIMEOUT), 0);
+    header(pkt, TIMEOUT, 0);
     break;
   case 1:
     res = read( udpsock, pkt, sz);
