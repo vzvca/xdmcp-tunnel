@@ -351,13 +351,29 @@ int automate( int state )
   return state;
 }
 
+void usage( char *msg )
+{
+  exit(1);
+}
 
 int main(int argc, char **argv)
 {
-  int state;
+  int opt, state;
   assert(sizeof(CARD8) ==1);
   assert(sizeof(CARD16)==2);
   assert(sizeof(CARD32)==4);
+
+
+  while ((opt = getopt(argc, argv, "d:")) != -1) {
+    switch (opt) {
+    case 'd':
+      display = atoi(optarg);
+      break;
+    default:
+      usage("unexpected option");
+    }
+  }
+  
   for( state = XDM_QUERY; state != XDM_OFF; /* nothing */) {
     state = automate(state);
   }

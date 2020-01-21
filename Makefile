@@ -1,5 +1,5 @@
 
-
+PREFIX ?= /usr/local
 LDFLAGS=-lX11
 CFLAGS=
 
@@ -19,7 +19,7 @@ $(EXE): $(SRC)
 	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
 
 install: build
-	@echo "done!"
+	install -s -v -o root -g root -t $(PREFIX)/bin $(EXE)
 
 clean:
 	@rm -f $(EXE) $(OBJ)

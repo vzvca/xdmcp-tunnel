@@ -51,14 +51,24 @@ XDMCP is enabled by editing the file /etc/lightdm/lightdm.conf, there should be 
 To enable XDMCP change the block to :
 ````
 [XDMCPServer]
-enabled=false
+enabled=true
 port=177
 listen-address=127.0.0.1
 #key=
 #hostname=
 ````
 
+#### Testing locally
+
+First step, start xnest and launch xdmcptunnel
 ![alt text](xnest-1.png)
+
+Second step log on. Make sure to not log as the current user it won't work nothing will be displayed
 ![alt text](xnest-2.png)
+
+
+#### Remote desktop
+
+The script rdp.sh starts a remote desktop.
 
 
