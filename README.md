@@ -13,11 +13,12 @@ This tool can be used when it is not possible to open a direct UDP connection be
 
 On the machine where the remote desktop will be displayed, an X server needs to be started.
 ````
+Xnest -listen tcp -from 127.0.0.1 :5 &
 ````
 
 On the machine whose desktop is accessed remotely, a small C program is executed. This program handles the XDMCP UDP negocitation and arranges for the X TCP traffic to be tunneled back to the client machine.
 ````
-ssh -L6005:127.0.0.1:6005 user@remote xdmcptunnel -s 5 
+ssh -L6005:127.0.0.1:6005 user@remote xdmcptunnel -d 5 
 ````
 
 ### Enabling XDMCP
