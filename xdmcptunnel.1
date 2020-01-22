@@ -1,0 +1,34 @@
+.\" Documentation for xdmcptunnel
+.TH xdmcptunnel "1" "January 2020" "xdmcptunnel" "User Commands"
+.SH NAME
+xdmcptunnel \- helper program to tunnel XDMCP through SSH
+.SH SYNOPSIS
+.B xdmcptunnel
+[\fI\,-d display-number\/\fR] [\fI\,-p port\/\fR] [\fI\,-a address\/\fR]
+.SH DESCRIPTION
+This manual page
+documents 
+.BR xdmcptunnel.
+.B xdmcptunnel
+performs the UDP XDMCP negociation using address and port. xdmcptunnel will arrange for X11 request to be sent to 127.0.0.1 on port 6000 plus display-number.
+.SH OPTIONS
+.PP
+No option is mandatory.
+.TP
+\fB\-d display-number\fR
+Indicate the display number to use for XDMCP. Defaults to 5, meaning that X11 will use port 6005.
+.TP
+\fB\-p port\fR
+Indicate the port to use for XDMCP. Defaults to 177 which is the default port for XDMCP protocol.
+.TP
+\fB\-a IP-address\fR
+Indicate the IP address to use for XDMCP. It must be an IPv4 address on the machine where xdmcptunnel runs. It defaults to 127.0.0.1.
+.SH AUTHOR
+Written by vzca.
+.SH "REPORTING BUGS"
+Report bugs using github <https://github.com/vzvca/xdmcp-tunnel>
+.SH COPYRIGHT
+Copyright \(co 2020 vzvca.
+MIT license<https://gnu.org/licenses/gpl.html>.
+.SH "SEE ALSO"
+Full documentation at: <https://github.com/vzvca/xdmcp-tunnel>

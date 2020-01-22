@@ -294,13 +294,16 @@ int automate( int state )
     break;
 
   case XDM_AWAIT_MANAGE_RESPONSE:
+    // In practice, we never receive any answer.
+    // After 30s we receive a TIMEOUT, which make the automatin
+    // advance to XDM_RUN_SESSION
     DBG(XDM_AWAIT_MANAGE_RESPONSE);
     waitfor( pkt, sizeof(pkt) );
     switch( opcode(pkt) ) {
     case REFUSE:
-      // selon la doc il faut faire :
+      // According to documentation we should do
       // state = XDM_START_CONNECTION
-      // j'ai plutot envie de quitter
+      // to reset. But we choose to leave.
       state = XDM_OFF;
       break;
     case FAILED:
@@ -364,10 +367,16 @@ int main(int argc, char **argv)
   assert(sizeof(CARD32)==4);
 
 
-  while ((opt = getopt(argc, argv, "d:")) != -1) {
+  while ((opt = getopt(argc, argv, "d:p:a:")) != -1) {
     switch (opt) {
+    case 'a':
+      ip = optarg;
+      break;
     case 'd':
       display = atoi(optarg);
+      break;
+    case 'p':
+      udpport = atoi(optarg);
       break;
     default:
       usage("unexpected option");

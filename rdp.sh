@@ -7,8 +7,8 @@
 # --------------------------------------------------------------------------
 proc usage { msg {status 1} } {
     puts stderr "$::argv0 error: $msg"
-    puts stderr "usage: $argv0 [-d display-number] user@remote"
-    puts stderr "\t-d display-number"
+    puts stderr "usage: $::argv0 \[-d display-number\] user@remote"
+    puts stderr "\t-d display-number\tinteger (default to $::display)"
     exit $status
 }
 
