@@ -2,7 +2,7 @@
 
 pipeline {
     options {
-	ansiColor('xterm')
+	/* ansiColor('xterm') */
 	buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr:'', daysToKeepStr: '', numToKeepStr: '5'))
 	disableConcurrentBuilds()
     }
@@ -10,6 +10,10 @@ pipeline {
     environment {
 	REPOSITORY="https://github.com/vzvca/xdmcp-tunnel"
 	BRANCH="master"
+    }
+
+    agent {
+        label "amd64"
     }
 
     stages {
