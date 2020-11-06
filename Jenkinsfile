@@ -45,7 +45,7 @@ pipeline {
 
 	stage('exec'){
 	    steps {
-		sh 'make'
+		sh 'make clean build'
 	    }
 	}
     }
