@@ -387,5 +387,6 @@ int main(int argc, char **argv)
     state = automate(state);
   }
   puts("done!");
+  
   return 0;
 }
